@@ -2,58 +2,75 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Interactive Quiz</title>
+    <title>Timed Quiz</title>
     <style>
-        body { font-family: sans-serif; max-width: 600px; margin: 40px auto; line-height: 1.6; }
-        .question { margin-bottom: 20px; padding: 15px; border: 1px solid #ddd; border-radius: 8px; }
-        button { background: #007bff; color: white; border: none; padding: 10px 20px; border-radius: 5px; cursor: pointer; }
-        button:hover { background: #0056b3; }
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; max-width: 700px; margin: 40px auto; padding: 20px; background: #f4f7f6; }
+        #timer { font-size: 1.5rem; font-weight: bold; color: #d9534f; background: white; padding: 10px; border-radius: 8px; position: sticky; top: 10px; border: 2px solid #d9534f; text-align: center; margin-bottom: 20px; }
+        .question { background: white; margin-bottom: 20px; padding: 20px; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
+        button { background: #28a745; color: white; border: none; padding: 12px 25px; border-radius: 5px; cursor: pointer; font-size: 1rem; }
+        button:hover { background: #218838; }
     </style>
 </head>
 <body>
 
-    <h2>Knowledge Check</h2>
+    <div id="timer">Time Remaining: 02:00:00</div>
+
     <div id="quiz-container">
         <div class="question">
-            <p>1. What is the capital of France?</p>
-            <input type="radio" name="q1" value="Paris"> Paris<br>
-            <input type="radio" name="q1" value="London"> London<br>
-            <input type="radio" name="q1" value="Berlin"> Berlin
+            <p><strong>1. Which programming language is known as the "skeleton" of a webpage?</strong></p>
+            <input type="radio" name="q1" value="HTML"> HTML<br>
+            <input type="radio" name="q1" value="Python"> Python<br>
+            <input type="radio" name="q1" value="C++"> C++
         </div>
 
         <div class="question">
-            <p>2. Which planet is known as the Red Planet?</p>
-            <input type="radio" name="q2" value="Mars"> Mars<br>
-            <input type="radio" name="q2" value="Venus"> Venus<br>
-            <input type="radio" name="q2" value="Jupiter"> Jupiter
+            <p><strong>2. What does CPU stand for?</strong></p>
+            <input type="radio" name="q2" value="Central Processing Unit"> Central Processing Unit<br>
+            <input type="radio" name="q2" value="Computer Personal User"> Computer Personal User<br>
+            <input type="radio" name="q2" value="Central Print Utility"> Central Print Utility
         </div>
 
-        <button onclick="saveResults()">Download Results as .txt</button>
+        <button onclick="saveResults()">Finish and Save Results</button>
     </div>
 
     <script>
+        // Set timer for 2 hours (in seconds)
+        let timeInSeconds = 2 * 60 * 60; 
+        const timerElement = document.getElementById('timer');
+
+        const countdown = setInterval(() => {
+            let hours = Math.floor(timeInSeconds / 3600);
+            let minutes = Math.floor((timeInSeconds % 3600) / 60);
+            let seconds = timeInSeconds % 60;
+
+            // Format numbers to always show two digits (e.g., 05 instead of 5)
+            timerElement.textContent = `Time Remaining: ${String(hours).padStart(2, '0')}:${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
+
+            if (timeInSeconds <= 0) {
+                clearInterval(countdown);
+                alert("Time is up! Your results will be saved automatically.");
+                saveResults();
+            } else {
+                timeInSeconds--;
+            }
+        }, 1000);
+
         function saveResults() {
-            let results = "Quiz Results\n-----------\n";
+            let results = "QUIZ REPORT\n";
+            results += "Time Finished: " + new Date().toLocaleString() + "\n";
+            results += "--------------------------\n";
             
-            // Collect answers
             const q1 = document.querySelector('input[name="q1"]:checked');
             const q2 = document.querySelector('input[name="q2"]:checked');
 
-            results += "Question 1: " + (q1 ? q1.value : "No answer") + "\n";
-            results += "Question 2: " + (q2 ? q2.value : "No answer") + "\n";
+            results += "Q1 Answer: " + (q1 ? q1.value : "SKIPPED") + "\n";
+            results += "Q2 Answer: " + (q2 ? q2.value : "SKIPPED") + "\n";
 
-            // Create a "Blob" (a file-like object of immutable, raw data)
             const blob = new Blob([results], { type: "text/plain" });
             const link = document.createElement("a");
-            
-            // Create a temporary link to trigger the download
-            link.getAttribute("href");
             link.href = window.URL.createObjectURL(blob);
-            link.download = "quiz_results.txt";
+            link.download = "quiz_final_report.txt";
             link.click();
-            
-            // Clean up
-            window.URL.revokeObjectURL(link.href);
         }
     </script>
 
