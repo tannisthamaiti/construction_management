@@ -2,68 +2,60 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Well Intel Portal</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <title>Interactive Quiz</title>
+    <style>
+        body { font-family: sans-serif; max-width: 600px; margin: 40px auto; line-height: 1.6; }
+        .question { margin-bottom: 20px; padding: 15px; border: 1px solid #ddd; border-radius: 8px; }
+        button { background: #007bff; color: white; border: none; padding: 10px 20px; border-radius: 5px; cursor: pointer; }
+        button:hover { background: #0056b3; }
+    </style>
 </head>
-<body class="bg-slate-950 text-slate-100 font-sans h-screen flex flex-col">
+<body>
 
-    <nav class="border-b border-slate-800 p-4 flex justify-between items-center bg-slate-900/50 backdrop-blur-md sticky top-0 z-50">
-        <div class="flex items-center space-x-4">
-            <div class="bg-blue-600 p-2 rounded-lg"><i class="fas fa-microchip text-white"></i></div>
-            <h1 class="text-xl font-bold tracking-tighter">WELL INTEL <span class="text-blue-500 text-sm font-light">INTELLIGENCE</span></h1>
-        </div>
-        <div class="flex items-center space-x-6 text-xs text-slate-400">
-            <span class="flex items-center"><i class="fas fa-circle text-green-500 mr-2 text-[8px]"></i> OCI TENANCY: ACTIVE</span>
-            <span class="flex items-center"><i class="fas fa-link text-blue-500 mr-2 text-[8px]"></i> IRAD NUTECH API: CONNECTED</span>
-        </div>
-    </nav>
-
-    <main class="flex-1 p-8 max-w-7xl mx-auto w-full">
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
-            <div class="bg-slate-900 p-6 rounded-xl border border-slate-800 hover:border-blue-500/50 transition">
-                <p class="text-slate-500 text-xs font-bold uppercase mb-2">Connected Wells</p>
-                <h2 class="text-3xl font-bold text-white">1,402</h2>
-            </div>
-            <div class="bg-slate-900 p-6 rounded-xl border border-slate-800 hover:border-blue-500/50 transition">
-                <p class="text-slate-500 text-xs font-bold uppercase mb-2">Agentic Queries (Today)</p>
-                <h2 class="text-3xl font-bold text-blue-400">856</h2>
-            </div>
-            <div class="bg-slate-900 p-6 rounded-xl border border-slate-800 hover:border-blue-500/50 transition">
-                <p class="text-slate-500 text-xs font-bold uppercase mb-2">Avg Correlation Acc.</p>
-                <h2 class="text-3xl font-bold text-green-400">94.2%</h2>
-            </div>
+    <h2>Knowledge Check</h2>
+    <div id="quiz-container">
+        <div class="question">
+            <p>1. What is the capital of France?</p>
+            <input type="radio" name="q1" value="Paris"> Paris<br>
+            <input type="radio" name="q1" value="London"> London<br>
+            <input type="radio" name="q1" value="Berlin"> Berlin
         </div>
 
-        <h3 class="text-slate-500 text-sm font-bold uppercase mb-6 tracking-widest">Analysis Modules</h3>
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <div class="question">
+            <p>2. Which planet is known as the Red Planet?</p>
+            <input type="radio" name="q2" value="Mars"> Mars<br>
+            <input type="radio" name="q2" value="Venus"> Venus<br>
+            <input type="radio" name="q2" value="Jupiter"> Jupiter
+        </div>
+
+        <button onclick="saveResults()">Download Results as .txt</button>
+    </div>
+
+    <script>
+        function saveResults() {
+            let results = "Quiz Results\n-----------\n";
             
-            <a href="correlation.html" class="group bg-slate-900 p-8 rounded-2xl border border-slate-800 hover:bg-slate-800/50 transition flex flex-col justify-between h-64">
-                <div>
-                    <i class="fas fa-chart-line text-blue-500 text-3xl mb-4"></i>
-                    <h4 class="text-xl font-bold text-white mb-2">Cross-Well Correlation</h4>
-                    <p class="text-slate-400 text-sm">Automated stratigraphic alignment and similarity matrix generation using IRAD NUTECH visual tracks.</p>
-                </div>
-                <span class="text-blue-500 text-sm font-bold group-hover:translate-x-2 transition-transform">Launch Module →</span>
-            </a>
+            // Collect answers
+            const q1 = document.querySelector('input[name="q1"]:checked');
+            const q2 = document.querySelector('input[name="q2"]:checked');
 
-            <a href="metadata.html" class="group bg-slate-900 p-8 rounded-2xl border border-slate-800 hover:bg-slate-800/50 transition flex flex-col justify-between h-64">
-                <div>
-                    <i class="fas fa-database text-purple-500 text-3xl mb-4"></i>
-                    <h4 class="text-xl font-bold text-white mb-2">Property Metadata</h4>
-                    <p class="text-slate-400 text-sm">Deep-dive into LAS headers, formation tops, and OSDU-compliant well property schemas.</p>
-                </div>
-                <span class="text-purple-500 text-sm font-bold group-hover:translate-x-2 transition-transform">Launch Module →</span>
-            </a>
+            results += "Question 1: " + (q1 ? q1.value : "No answer") + "\n";
+            results += "Question 2: " + (q2 ? q2.value : "No answer") + "\n";
 
-        </div>
-    </main>
+            // Create a "Blob" (a file-like object of immutable, raw data)
+            const blob = new Blob([results], { type: "text/plain" });
+            const link = document.createElement("a");
+            
+            // Create a temporary link to trigger the download
+            link.getAttribute("href");
+            link.href = window.URL.createObjectURL(blob);
+            link.download = "quiz_results.txt";
+            link.click();
+            
+            // Clean up
+            window.URL.revokeObjectURL(link.href);
+        }
+    </script>
 
-    <footer class="p-6 border-t border-slate-800 text-center text-slate-600 text-[10px] uppercase tracking-[4px]">
-        Powered by Well Intel AI
-    </footer>
 </body>
 </html>
-
-
-
