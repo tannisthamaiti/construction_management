@@ -2,77 +2,284 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Timed Quiz</title>
+    <title>Interactive Quiz</title>
     <style>
-        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; max-width: 700px; margin: 40px auto; padding: 20px; background: #f4f7f6; }
-        #timer { font-size: 1.5rem; font-weight: bold; color: #d9534f; background: white; padding: 10px; border-radius: 8px; position: sticky; top: 10px; border: 2px solid #d9534f; text-align: center; margin-bottom: 20px; }
-        .question { background: white; margin-bottom: 20px; padding: 20px; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
-        button { background: #28a745; color: white; border: none; padding: 12px 25px; border-radius: 5px; cursor: pointer; font-size: 1rem; }
-        button:hover { background: #218838; }
+        body { font-family: sans-serif; max-width: 600px; margin: 40px auto; line-height: 1.6; }
+        .question { margin-bottom: 20px; padding: 15px; border: 1px solid #ddd; border-radius: 8px; }
+        button { background: #007bff; color: white; border: none; padding: 10px 20px; border-radius: 5px; cursor: pointer; }
+        button:hover { background: #0056b3; }
     </style>
 </head>
 <body>
 
-    <div id="timer">Time Remaining: 02:00:00</div>
-
+    <h2>Knowledge Check</h2>
     <div id="quiz-container">
         <div class="question">
-            <p><strong>1. Which programming language is known as the "skeleton" of a webpage?</strong></p>
-            <input type="radio" name="q1" value="HTML"> HTML<br>
-            <input type="radio" name="q1" value="Python"> Python<br>
-            <input type="radio" name="q1" value="C++"> C++
+            <p>1. What is the primary purpose of the Ontario Building Code?</p>
+            <input type="radio" name="q1" value="Paris"> To ensure aesthetic appeal of buildings<br>
+            <input type="radio" name="q1" value="London"> To regulate building construction for safety and health<br>
+            <input type="radio" name="q1" value="Berlin"> To promote artistic freedom in architectural design<br>
+            <input type="radio" name="q1" value="Berlin"> To minimize construction costs<br>
+
         </div>
 
         <div class="question">
-            <p><strong>2. What does CPU stand for?</strong></p>
-            <input type="radio" name="q2" value="Central Processing Unit"> Central Processing Unit<br>
-            <input type="radio" name="q2" value="Computer Personal User"> Computer Personal User<br>
-            <input type="radio" name="q2" value="Central Print Utility"> Central Print Utility
+            <p>2. Which volume of the Ontario Building Code Compendium covers the administrative provisions?</p>
+            <input type="radio" name="q2" value="Mars"> Volume 1<br>
+            <input type="radio" name="q2" value="Venus"> Volume 2<br>
+            <input type="radio" name="q2" value="Jupiter"> Both Volume 1 and Volume 2<br>
+            <input type="radio" name="q2" value="Jupiter"> None of the above
+        </div>
+        <div class="question">
+            <p>3. What is a key consideration in structural design for construction projects?</p>
+            <input type="radio" name="q1" value="a"> a. Maximizing material costs<br>
+            <input type="radio" name="q1" value="b"> b. Minimizing environmental impact<br>
+            <input type="radio" name="q1" value="c"> c. Achieving artistic expression<br>
+            <input type="radio" name="q1" value="d"> d. Following historical construction methods
+        </div>
+        <div class="question">
+            <p>4. Which building system is responsible for providing safe egress in case of emergencies?</p>
+            <input type="radio" name="q2" value="a"> a. Mechanical system<br>
+            <input type="radio" name="q2" value="b"> b. Electrical system<br>
+            <input type="radio" name="q2" value="c"> c. Fire protection system<br>
+            <input type="radio" name="q2" value="d"> d. Plumbing system
+        </div>
+        <div class="question">
+            <p>5. What is a fundamental responsibility of building officials and inspectors?</p>
+            <input type="radio" name="q3" value="a"> a. Maximize construction speed<br>
+            <input type="radio" name="q3" value="b"> b. Minimize regulatory compliance<br>
+            <input type="radio" name="q3" value="c"> c. Enforce compliance with building codes<br>
+            <input type="radio" name="q3" value="d"> d. Ignore building code violations
+        </div>
+        <div class="question">
+            <p>6. What is the significance of integrating building systems in construction projects?</p>
+            <input type="radio" name="q4" value="a"> a. Increases energy consumption<br>
+            <input type="radio" name="q4" value="b"> b. Reduces overall project costs<br>
+            <input type="radio" name="q4" value="c"> c. Complicates maintenance procedures<br>
+            <input type="radio" name="q4" value="d"> d. Improves performance and energy efficiency
+        </div>
+        <div class="question">
+            <p>7. Which category of buildings typically requires stricter regulatory requirements?</p>
+            <input type="radio" name="q5" value="a"> a. Residential buildings<br>
+            <input type="radio" name="q5" value="b"> b. Industrial buildings<br>
+            <input type="radio" name="q5" value="c"> c. Educational buildings<br>
+            <input type="radio" name="q5" value="d"> d. Temporary structures
+        </div>
+        <div class="question">
+            <p>8. How do technological advancements impact construction practices?</p>
+            <input type="radio" name="q6" value="a"> a. They increase safety risks<br>
+            <input type="radio" name="q6" value="b"> b. They improve efficiency and accuracy<br>
+            <input type="radio" name="q6" value="c"> c. They decrease project complexity<br>
+            <input type="radio" name="q6" value="d"> d. They are irrelevant to construction
+        </div>
+        <div class="question">
+            <p>9. What is the purpose of conducting inspections during construction?</p>
+            <input type="radio" name="q7" value="a"> a. To delay project timelines<br>
+            <input type="radio" name="q7" value="b"> b. To ensure compliance with building codes<br>
+            <input type="radio" name="q7" value="c"> c. To increase construction costs<br>
+            <input type="radio" name="q7" value="d"> d. To ignore potential hazards
+        </div>
+        <div class="question">
+            <p>10. What aspect of construction projects does the Ontario Building Code primarily regulate?</p>
+            <input type="radio" name="q8" value="a"> a. Architectural style<br>
+            <input type="radio" name="q8" value="b"> b. Structural integrity<br>
+            <input type="radio" name="q8" value="c"> c. Landscaping design<br>
+            <input type="radio" name="q8" value="d"> d. Interior decoration
+        </div>
+        <div class="question">
+            <p>11. Which document outlines the roles and responsibilities of project stakeholders?</p>
+            <input type="radio" name="q9" value="a"> a. Building permit<br>
+            <input type="radio" name="q9" value="b"> b. Inspection report<br>
+            <input type="radio" name="q9" value="c"> c. Construction contract<br>
+            <input type="radio" name="q9" value="d"> d. Environmental impact assessment
+        </div>
+        <div class="question">
+            <p>12. What is a critical consideration in sustainable building practices?</p>
+            <input type="radio" name="q10" value="a"> a. Maximizing resource consumption<br>
+            <input type="radio" name="q10" value="b"> b. Minimizing waste and pollution<br>
+            <input type="radio" name="q10" value="c"> c. Ignoring renewable energy sources<br>
+            <input type="radio" name="q10" value="d"> d. Using non-recyclable materials
+        </div>
+        <div class="question">
+            <p>13. What is the purpose of load calculations in structural design?</p>
+            <input type="radio" name="q11" value="a"> a. To estimate construction costs<br>
+            <input type="radio" name="q11" value="b"> b. To determine material quantities<br>
+            <input type="radio" name="q11" value="c"> c. To ensure structural stability<br>
+            <input type="radio" name="q11" value="d"> d. To calculate energy consumption
+        </div>
+        <div class="question">
+            <p>14. Which entity is responsible for issuing building permits?</p>
+            <input type="radio" name="q12" value="a"> a. Contractors<br>
+            <input type="radio" name="q12" value="b"> b. Architects<br>
+            <input type="radio" name="q12" value="c"> c. Building officials<br>
+            <input type="radio" name="q12" value="d"> d. Environmentalists
+        </div>
+        <div class="question">
+            <p>15. What role do case studies play in understanding building code compliance?</p>
+            <input type="radio" name="q13" value="a"> a. They provide legal advice<br>
+            <input type="radio" name="q13" value="b"> b. They demonstrate practical implications<br>
+            <input type="radio" name="q13" value="c"> c. They offer financial incentives<br>
+            <input type="radio" name="q13" value="d"> d. They bypass regulatory requirements
+        </div>
+        <div class="question">
+            <p>16. What is the primary objective of environmental considerations in construction?</p>
+            <input type="radio" name="q14" value="a"> a. To increase pollution<br>
+            <input type="radio" name="q14" value="b"> b. To reduce energy efficiency<br>
+            <input type="radio" name="q14" value="c"> c. To promote sustainability<br>
+            <input type="radio" name="q14" value="d"> d. To ignore natural resources
+        </div>
+        <div class="question">
+            <p>17. How do building codes contribute to safety in construction projects?</p>
+            <input type="radio" name="q15" value="a"> a. By encouraging shortcuts<br>
+            <input type="radio" name="q15" value="b"> b. By setting minimum standards<br>
+            <input type="radio" name="q15" value="c"> c. By promoting non-compliance<br>
+            <input type="radio" name="q15" value="d"> d. By ignoring safety measures
+        </div>
+        <div class="question">
+            <p>18. What is an essential skill for interpreting the Ontario Building Code?</p>
+            <input type="radio" name="q16" value="a"> a. Memorizing all sections<br>
+            <input type="radio" name="q16" value="b"> b. Understanding key concepts<br>
+            <input type="radio" name="q16" value="c"> c. Ignoring definitions<br>
+            <input type="radio" name="q16" value="d"> d. Avoiding compliance
+        </div>
+        <div class="question">
+            <p>19. What is a critical consideration in fire protection system design?</p>
+            <input type="radio" name="q17" value="a"> a. Ignoring emergency exits<br>
+            <input type="radio" name="q17" value="b"> b. Minimizing fire suppression equipment<br>
+            <input type="radio" name="q17" value="c"> c. Maximizing fire hazards<br>
+            <input type="radio" name="q17" value="d"> d. Ensuring occupant safety
+        </div>
+        <div class="question">
+            <p>20. What role does the Ontario Building Code play in ensuring quality assurance?</p>
+            <input type="radio" name="q18" value="a"> a. It promotes substandard construction<br>
+            <input type="radio" name="q18" value="b"> b. It encourages cost-cutting measures<br>
+            <input type="radio" name="q18" value="c"> c. It establishes minimum quality standards<br>
+            <input type="radio" name="q18" value="d"> d. It ignores construction defects
+        </div>
+        <div class="question">
+            <p>21. What is the purpose of regulations governing building services installation?</p>
+            <input type="radio" name="q19" value="a"> a. To ignore safety standards<br>
+            <input type="radio" name="q19" value="b"> b. To maximize installation costs<br>
+            <input type="radio" name="q19" value="c"> c. To ensure system reliability and safety<br>
+            <input type="radio" name="q19" value="d"> d. To discourage energy efficiency
+        </div>
+        <div class="question">
+            <p>22. What is a critical consideration in evaluating construction plans for compliance?</p>
+            <input type="radio" name="q20" value="a"> a. Ignoring building codes<br>
+            <input type="radio" name="q20" value="b"> b. Prioritizing aesthetics over safety<br>
+            <input type="radio" name="q20" value="c"> c. Ensuring structural integrity<br>
+            <input type="radio" name="q20" value="d"> d. Minimizing stakeholder involvement
+        </div>
+        <div class="question">
+            <p>23. What impact do emerging trends have on construction practices?</p>
+            <input type="radio" name="q21" value="a"> a. They slow down technological advancements<br>
+            <input type="radio" name="q21" value="b"> b. They increase regulatory complexity<br>
+            <input type="radio" name="q21" value="c"> c. They improve efficiency and innovation<br>
+            <input type="radio" name="q21" value="d"> d. They discourage industry growth
+        </div>
+        <div class="question">
+            <p>24. How do amendments to the Ontario Building Code affect construction projects?</p>
+            <input type="radio" name="q22" value="a"> a. They decrease safety standards<br>
+            <input type="radio" name="q22" value="b"> b. They increase compliance challenges<br>
+            <input type="radio" name="q22" value="c"> c. They ignore regulatory requirements<br>
+            <input type="radio" name="q22" value="d"> d. They improve project efficiency
+        </div>
+        <div class="question">
+            <p>25. What is a fundamental principle in designing sustainable buildings?</p>
+            <input type="radio" name="q23" value="a"> a. Maximizing waste production<br>
+            <input type="radio" name="q23" value="b"> b. Minimizing energy efficiency<br>
+            <input type="radio" name="q23" value="c"> c. Incorporating renewable resources<br>
+            <input type="radio" name="q23" value="d"> d. Ignoring environmental impact
+        </div>
+        <div class="question">
+            <p>26. Explain the significance of compliance with building codes in the construction sector, particularly in Ontario.</p>
+            <textarea name="q26" rows="10" cols="80" placeholder="Type your explanation here..."></textarea>
+        </div>
+        <div class="question">
+            <p>27. Discuss two principles of structural design commonly used in construction projects.</p>
+            <textarea name="q27" rows="10" cols="80" placeholder="Type your explanation here..."></textarea>
+        </div>
+        <div class="question">
+            <p>28. Describe the organizational structure of the 2012 Ontario Building Code Compendium Volume 1 & 2.</p>
+            <textarea name="q28" rows="10" cols="80" placeholder="Type your explanation here..."></textarea>
+        </div>
+        <div class="question">
+            <p>29. Identify three categories of buildings as per the Ontario Building Code and their respective regulatory requirements.</p>
+            <textarea name="q29" rows="10" cols="80" placeholder="Type your explanation here..."></textarea>
+        </div>
+        <div class="question">
+            <p>30. Explain the integration of mechanical, electrical, plumbing, and fire protection systems for optimal building performance.</p>
+            <textarea name="q30" rows="10" cols="80" placeholder="Type your explanation here..."></textarea>
+        </div>
+        <div class="question">
+            <p>31. Describe the responsibilities of building officials, inspectors, and stakeholders in ensuring compliance with building codes during construction.</p>
+            <textarea name="q31" rows="10" cols="80" placeholder="Type your explanation here..."></textarea>
+        </div>
+        <div class="question">
+            <p>32. Discuss two recent updates or amendments made to the Ontario Building Code and their implications for construction practices.</p>
+            <textarea name="q32" rows="10" cols="80" placeholder="Type your explanation here..."></textarea>
+        </div>
+        <div class="question">
+            <p>33. Explain the importance of environmental considerations and sustainable building practices in the construction industry.</p>
+            <textarea name="q33" rows="10" cols="80" placeholder="Type your explanation here..."></textarea>
+        </div>
+        <div class="question">
+            <p>34. Analyze the role of technological advancements in shaping modern construction practices and regulatory compliance.</p>
+            <textarea name="q34" rows="10" cols="80" placeholder="Type your explanation here..."></textarea>
+        </div>
+        <div class="question">
+            <p>35. Evaluate the challenges and opportunities presented by future trends in regulatory compliance and building code enforcement for the construction industry in Ontario..</p>
+            <textarea name="q33" rows="10" cols="80" placeholder="Type your explanation here..."></textarea>
         </div>
 
-        <button onclick="saveResults()">Finish and Save Results</button>
+
+        <button onclick="saveResults()">Download Results as .txt</button>
     </div>
 
     <script>
-        // Set timer for 2 hours (in seconds)
-        let timeInSeconds = 2 * 60 * 60; 
-        const timerElement = document.getElementById('timer');
+    function saveResults() {
+        let results = "Quiz Results\n-----------\n\n";
 
-        const countdown = setInterval(() => {
-            let hours = Math.floor(timeInSeconds / 3600);
-            let minutes = Math.floor((timeInSeconds % 3600) / 60);
-            let seconds = timeInSeconds % 60;
+        // 1. Get all Radio Button answers
+        // We use a Set to find all unique names (q1, q2, etc.)
+        const radioGroups = new Set();
+        document.querySelectorAll('input[type="radio"]').forEach(input => {
+            radioGroups.add(input.name);
+        });
 
-            // Format numbers to always show two digits (e.g., 05 instead of 5)
-            timerElement.textContent = `Time Remaining: ${String(hours).padStart(2, '0')}:${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
+        results += "MULTIPLE CHOICE ANSWERS:\n";
+        radioGroups.forEach(name => {
+            const selected = document.querySelector(`input[name="${name}"]:checked`);
+            results += `Question ${name}: ${selected ? selected.value : "No answer"}\n`;
+        });
 
-            if (timeInSeconds <= 0) {
-                clearInterval(countdown);
-                alert("Time is up! Your results will be saved automatically.");
-                saveResults();
-            } else {
-                timeInSeconds--;
-            }
-        }, 1000);
-
-        function saveResults() {
-            let results = "QUIZ REPORT\n";
-            results += "Time Finished: " + new Date().toLocaleString() + "\n";
-            results += "--------------------------\n";
-            
-            const q1 = document.querySelector('input[name="q1"]:checked');
-            const q2 = document.querySelector('input[name="q2"]:checked');
-
-            results += "Q1 Answer: " + (q1 ? q1.value : "SKIPPED") + "\n";
-            results += "Q2 Answer: " + (q2 ? q2.value : "SKIPPED") + "\n";
-
-            const blob = new Blob([results], { type: "text/plain" });
-            const link = document.createElement("a");
-            link.href = window.URL.createObjectURL(blob);
-            link.download = "quiz_final_report.txt";
-            link.click();
+        // 2. Get ALL Textarea answers
+        // This will find every textarea on the page automatically
+        const textareas = document.querySelectorAll('textarea');
+        
+        if (textareas.length > 0) {
+            results += "\nWRITTEN ANSWERS:\n";
+            textareas.forEach((area, index) => {
+                const questionLabel = area.name || `Text Question ${index + 1}`;
+                const answer = area.value.trim() !== "" ? area.value : "No answer";
+                
+                results += `\n[${questionLabel}]\n${answer}\n`;
+                results += "-----------------------\n";
+            });
         }
-    </script>
+
+        // 3. Create and trigger the download
+        const blob = new Blob([results], { type: "text/plain" });
+        const link = document.createElement("a");
+        
+        link.href = window.URL.createObjectURL(blob);
+        link.download = "quiz_results.txt";
+        link.click();
+        
+        // Clean up
+        window.URL.revokeObjectURL(link.href);
+    }
+</script>
 
 </body>
 </html>
