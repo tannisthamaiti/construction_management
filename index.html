@@ -8,6 +8,23 @@
         .question { margin-bottom: 20px; padding: 15px; border: 1px solid #ddd; border-radius: 8px; }
         button { background: #007bff; color: white; border: none; padding: 10px 20px; border-radius: 5px; cursor: pointer; }
         button:hover { background: #0056b3; }
+        textarea {
+    width: 100%;             /* Fits the width of the parent container */
+    padding: 12px;           /* Space inside the box for text */
+    margin-top: 10px;        /* Gap between question and box */
+    border: 1px solid #ccc;  /* Subtle border */
+    border-radius: 4px;      /* Slightly rounded corners */
+    font-family: inherit;    /* Keeps the font consistent with the body */
+    font-size: 14px;
+    resize: vertical;        /* Allows user to stretch height, but not width */
+    box-sizing: border-box;  /* Prevents padding from breaking the width */
+}
+
+textarea:focus {
+    border-color: #007bff;   /* Blue highlight when clicking in */
+    outline: none;           /* Removes the default browser glow */
+    box-shadow: 0 0 5px rgba(0,123,255,0.2);
+}
     </style>
 </head>
 <body>
@@ -283,4 +300,3 @@
 
 </body>
 </html>
-
